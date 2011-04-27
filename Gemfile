@@ -16,11 +16,12 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # To use debugger
 # gem 'ruby-debug'
 
-# Bundle the extra gems:
+#Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
+gem 'httparty'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -28,3 +29,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :test do
+gem "rspec-rails"
+end
