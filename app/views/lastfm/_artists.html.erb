@@ -1,0 +1,24 @@
+<center>
+<h3>top artists</h3>
+<table>
+<tr>
+<% @artists.each_with_index do |artist,index|%>
+<th>
+	<div style="border: thin solid black; width: 100px; height: 100px; margin: 5px; padding: 5px; background-color:white">
+		<div align="center"> 
+			<a class="infobox" href="<%= artist.url%>"><img src="<%=artist.image%>" width="100" height="100"> <span><%= artist.name%></span></a>
+		</div>
+	</div>
+	<%if (index+1)%9==0%>
+		</tr>
+		<tr>
+	<%end%>
+</th>
+<%end%>
+</tr>
+</table>
+</center>
+
+
+
+

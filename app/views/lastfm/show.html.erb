@@ -1,22 +1,21 @@
+<% content_for :head do %>
+<center>	
 <%= form_for @user, :as=>:user,  :url=>{:action=>'show', :controller=>'lastfm'} do |f| %>
-	Last.fm-Nutzername: <%= f.text_field :name%> 
-	<%= f.submit "Los"%>
+	<b>last.fm-username: <%= f.text_field :name%> 
+	<%= f.submit "go!", :onclick=>"list()"%></b>
 <% end %>
 <hr/>
-<table>
-	<tr>
-	<% @songs.each_with_index do |song,index|%>
-		<td><div style="border: thin solid black; width: 150px; height: 180px; margin: 50px; padding: 5px ">
-		<div align="center"> <img src="<%=song.image%>" width="100" height="100"> </div>
-		<div align="center"><small><b><%= song.name%></b></small></div>
-		<div align="center"> <small><%= song.artist%> </small></div>
-		<div align="center"> <small><%= song.album%> </small></div>
-		</div>
-		</td>
-		<%if index==4%>
-			</tr>
-			<tr>
-		<%end%>
-	<%end%>
-	</tr>
-</table>
+<%end%>
+</center>
+<% content_for :body do %>
+<div id="body">
+<%unless @songs==[]%>
+<%= render "songs"%>
+<%end%>
+<% unless @artists==[]%>
+<%= render "artists"%>
+<%end%>
+</div>
+<%end%>
+
+

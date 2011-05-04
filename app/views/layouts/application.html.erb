@@ -5,10 +5,19 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+<style type="text/css">
+	a.infobox { border-bottom: 1px; color: black; text-decoration:none; text-align:left; position:relative;}
+	a.infobox span { visibility:hidden; margin-top:0em; margin-left:4em; padding:1em;width:250px;}
+	a.infobox:hover span, a.infobox:focus span, a.infobox:active span {
+    	visibility:visible; left:1em; position:absolute; z-index:1;top:-10px;right: margin: 5px; padding: 5px;
+		    border:2px solid black; color:black; background:white; }
+</style>
+
+
 </head>
 <body>
-
-<%= yield %>
-
+	<%= yield :head%>
+	<%= yield :body%>
 </body>
 </html>
+ 
