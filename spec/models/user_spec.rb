@@ -15,14 +15,17 @@ describe User do
     it "should return songs" do
       user=User.new
       user.name="Demo666"
-      songs=user.last_songs(10)
+      songs=user.last_songs
       songs.is_a?(Array).should be true
+      songs.length.should == 100
     end
     
     it "should get top artists" do
       user=User.new
-      user.name="schacketito"
-      puts user.top_artists(5).inspect
+      user.name="Demo666"
+      artists=user.top_artists
+      artists.is_a?(Array).should be true
+      artists.length.should == 50
     end
   end
   

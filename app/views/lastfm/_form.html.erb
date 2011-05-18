@@ -1,0 +1,7 @@
+<center>
+<%= form_for @user, :as=>:user,  :url=>{:action=>'show', :controller=>'lastfm'} do |f| %>
+	<b>last.fm-username: <%= f.text_field :name%> 
+	<%= f.submit "go!"%>
+	</b>
+<% end %>
+</center>

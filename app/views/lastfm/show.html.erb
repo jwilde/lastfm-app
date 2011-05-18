@@ -1,20 +1,19 @@
-<% content_for :head do %>
-<center>	
-<%= form_for @user, :as=>:user,  :url=>{:action=>'show', :controller=>'lastfm'} do |f| %>
-	<b>last.fm-username: <%= f.text_field :name%> 
-	<%= f.submit "go!", :onclick=>"list()"%></b>
-<% end %>
-<hr/>
-<%end%>
+<%content_for :head do%>
+
+<%=render :partial => "form"%>
+<center>
+number of tracks: <%= select_tag :limit_songs, options_for_select([0,5,10,15,20,25,50,100], 20), :onchange=>remote_function(:url=>{:action=>'replace_songs', :controller=>'lastfm'}, :with=>"'limit_songs=' + $('limit_songs').value")%>
+number of artists: <%= select_tag :limit_artists ,options_for_select([0,5,10,15,20,25,50], 10), :onchange=>remote_function(:url=>{:action=>'replace_artists', :controller=>'lastfm'}, :with=>"'limit_artists=' + $('limit_artists').value" )%>
 </center>
+<hr/>
+
+<%end%>
 <% content_for :body do %>
-<div id="body">
-<%unless @songs==[]%>
-<%= render "songs"%>
-<%end%>
-<% unless @artists==[]%>
-<%= render "artists"%>
-<%end%>
+<div id='song_div'>
+	<%= render :partial => 'song_list', :locals=>{:limit_songs=>@limit_songs, :songs=>@songs}%>
+</div>
+<div id='artist_div'>
+<%= render  :partial=> "artist_list", :locals=>{:limit_artists=>@limit_artists, :artists=>@artists}%>
 </div>
 <%end%>
 

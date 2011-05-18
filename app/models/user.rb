@@ -18,8 +18,9 @@ class User
     end
   end
   
-  def last_songs(limit)
-    response=HTTParty.get("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{self.name}&api_key=932798e3e342041747867884a8619147&limit=#{limit}").body
+  #returns array of 100 songs, if not enough set new limit(max 200)
+  def last_songs  
+    response=HTTParty.get("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{self.name}&api_key=932798e3e342041747867884a8619147&limit=100").body
     songs=[]
     doc=Nokogiri::XML::parse(response)
     doc.xpath("//track").each do |t|
@@ -34,8 +35,9 @@ class User
     return songs
   end
   
-  def top_artists(limit)
-    response=HTTParty.get("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{self.name}&api_key=932798e3e342041747867884a8619147&limit=#{limit}").body
+  # default limit 50, if not enough set new limit
+  def top_artists
+    response=HTTParty.get("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{self.name}&api_key=932798e3e342041747867884a8619147").body
     artists=[]
     doc=Nokogiri::XML::parse(response)
     doc.xpath("//artist").each do |a|
