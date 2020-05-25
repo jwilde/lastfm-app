@@ -24,7 +24,7 @@ GEM
       activesupport (= 3.0.1)
       arel (~> 1.0.0)
       tzinfo (~> 0.3.23)
-    activeresource (3.0.1)
+    activeresource (5.1.1)
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
     activesupport (3.0.1)
